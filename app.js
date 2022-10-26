@@ -1,4 +1,5 @@
 // ***setting ups *****
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -8,7 +9,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname));
 app.set("view engine", "ejs");
-mongoose.connect("mongodb+srv://triloki35:triloki35@cluster0.1fz6j.mongodb.net/todolistDB"); 
+mongoose.connect("mongodb+srv://triloki35:"+process.env.PASS+"@cluster0.1fz6j.mongodb.net/todolistDB"); 
 
 // creating Collection in db
 const itemSchema = mongoose.Schema({
